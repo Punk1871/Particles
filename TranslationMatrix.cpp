@@ -1,8 +1,0 @@
-#include "TranslationMatrix.h"
-
-TranslationMatrix::TranslationMatrix(double xShift, double yShift, int nCols) : Matrix(2, nCols) {
-    for (unsigned short i = 0; i < nCols; i++) {
-        (*this)(0, i) = xShift;
-        (*this)(1, i) = yShift;
-    }
-}
