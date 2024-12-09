@@ -151,7 +151,7 @@ void Particle::unitTests()
     cout << "Score: " << score << " / 7" << endl;
 }
 
-Particle::Particle(RenderTarget& target, int numPoints, Vector2i mouseClickPosition) : m_A(2, numPoints, m_ttl(TTL), m_numPoints(numPoints)
+Particle::Particle(RenderTarget& target, int numPoints, Vector2i mouseClickPosition) : m_A(2, numPoints), m_ttl(TTL), m_numPoints(numPoints)
 {
     random_device rd; 
     mt19937 gen(rd()));
