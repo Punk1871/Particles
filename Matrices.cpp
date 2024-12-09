@@ -99,9 +99,30 @@ namespace Matrices
 
 	}
 
+	TranslationMatrix::TranslationMatrix(double xShift, double yShift, int nCols) : Matrix(2, nCols)
+	{
+    		for (unsigned short i = 0; i < nCols; i++) 
+   		 {
+      		  (*this)(0, i) = xShift;
+    		  (*this)(1, i) = yShift;
+   		 }
+	}
 
+	ScalingMatrix::ScalingMatrix(double scale) : Matrix(2, 2) 
+	{
+    		(*this)(0, 0) = scale;
+   		(*this)(0, 1) = 0;
+  		(*this)(1, 0) = 0;
+  		(*this)(1, 1) = scale;
+	}
 
-
+	RotationMatrix::RotationMatrix(double theta) : Matrix(2, 2) 
+	{
+		    (*this)(0, 0) = cos(theta);
+		    (*this)(0, 1) = -sin(theta);
+		    (*this)(1, 0) = sin(theta);
+		    (*this)(1, 1) = cos(theta);
+	}
 
 
 
