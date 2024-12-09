@@ -78,6 +78,13 @@ namespace Matrices
             sin(theta)   cos(theta)
             */
             ///theta represents the angle of rotation in radians, counter-clockwise
+        RotationMatrix::RotationMatrix(double theta) : Matrix(2, 2) 
+        {
+            (*this)(0, 0) = cos(theta);
+            (*this)(0, 1) = -sin(theta);
+            (*this)(1, 0) = sin(theta);
+            (*this)(1, 1) = cos(theta);
+        }
             RotationMatrix(double theta);
     };
 
@@ -93,6 +100,13 @@ namespace Matrices
             0       scale
             */
             ///scale represents the size multiplier
+ScalingMatrix::ScalingMatrix(double scale) : Matrix(2, 2) 
+        {
+            (*this)(0, 0) = scale;
+            (*this)(0, 1) = 0;
+            (*this)(1, 0) = 0;
+            (*this)(1, 1) = scale;
+        }
             ScalingMatrix(double scale);
     };
 
@@ -110,6 +124,15 @@ namespace Matrices
             ///paramaters are xShift, yShift, and nCols
             ///nCols represents the number of columns in the matrix
             ///where each column contains one (x,y) coordinate pair
+
+        TranslationMatrix::TranslationMatrix(double xShift, double yShift, int nCols) : Matrix(2, nCols) 
+        {
+            for (unsigned short i = 0; i < nCols; i++) 
+            {
+                (*this)(0, i) = xShift;
+                (*this)(1, i) = yShift;
+             }
+        }
             TranslationMatrix(double xShift, double yShift, int nCols);
     };
 }
