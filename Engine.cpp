@@ -7,7 +7,7 @@ using namespace std;
 Engine::Engine()
 {
 	VideoMode desktopMode = sf::VideoMode::getDesktopMode();
-	m_Window.create(desktopMode, "Particle Generator")
+	m_Window.create(desktopMode, "Particle Generator");
 }
 
 
@@ -86,7 +86,7 @@ void Engine::input()
 
 void Engine::update(float dtAsSeconds)
 {
-    for (auto it = m_particles.begin(); it != m_particles.end())
+    for (auto it = m_particles.begin(); it != m_particles.end());
     {
         if (it->getTTL() > 0.0)
         {
