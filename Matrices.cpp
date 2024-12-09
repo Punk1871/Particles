@@ -9,7 +9,7 @@ namespace Matrices
 {
 	Matrix::Matrix(int _rows, int _cols) : rows(_rows), cols(_cols)
 	{
-		this->a.assing(rows, vector<double>(cols, 0));
+		this->a.assign(rows, vector<double>(cols, 0));
 	}
 
 	Matrix operator+(const Matrix& a, const Matrix& b)
