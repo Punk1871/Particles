@@ -168,7 +168,7 @@ Particle::Particle(RenderTarget& target, int numPoints, Vector2i mouseClickPosit
     this->m_cartesianPlane.setCenter(0, 0);
     this->m_cartesianPlane.setSize(target.getSize().x, (-1.0)* target.getSize().y);
 
-    this->M_centerCoordinate = Vector2f(round(target.mapPixelToCoords(mouseClickPosition, this->m_cartesianPlane).x), round(target.mapPixelToCoords(mouseClickPosition, this->m_cartesianPlane).y));
+    this->m_centerCoordinate = Vector2f(round(target.mapPixelToCoords(mouseClickPosition, this->m_cartesianPlane).x), round(target.mapPixelToCoords(mouseClickPosition, this->m_cartesianPlane).y));
 
     this->m_vx = velocityDis(gen); //random x velocity
     this->m_vy = velocityDis(gen); //random y velocity
@@ -254,7 +254,7 @@ void Particle::rotate(double theta)
 
 void Particle::scale(double c)
 {
-    Vector2f temp = m_cenetCoordinates;
+    Vector2f temp = m_centerCoordinates;
 
     translate(-m_centerCoordinate.x, -m_centerCoordinate.y);
 
