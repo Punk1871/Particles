@@ -254,7 +254,7 @@ void Particle::rotate(double theta)
 
 void Particle::scale(double c)
 {
-    Vector2f temp = m_centerCoordinates;
+    Vector2f temp = m_centerCoordinate;
 
     translate(-m_centerCoordinate.x, -m_centerCoordinate.y);
 
