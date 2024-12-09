@@ -155,7 +155,7 @@ void Particle::unitTests()
 Particle::Particle(RenderTarget& target, int numPoints, Vector2i mouseClickPosition) : m_A(2, numPoints), m_ttl(TTL), m_numPoints(numPoints)
 {
     random_device rd; 
-    mt19937 gen(rd()));
+    mt19937 gen(rd());
     uniform_real_distribution<float> thetaDis(0.0f, static_cast<float>(M_PI / 2));
     uniform_real_distribution<float> velocityDis(100.0f, 500.0f);
     uniform_real_distribution<float> radiusDis(20.0f, 80.0f);
@@ -166,15 +166,15 @@ Particle::Particle(RenderTarget& target, int numPoints, Vector2i mouseClickPosit
     m_radiansPerSec = static_cast<float>(rand()) / RAND_MAX * static_cast<float>(M_PI);
 
     this->m_cartesianPlane.setCenter(0, 0);
-    this->m_cartesianPlane.setSize(target.getSize().x, (-1.0)* target.getSize.y);
+    this->m_cartesianPlane.setSize(target.getSize().x, (-1.0)* target.getSize().y);
 
-    this_.M_centerCoordinate = Vector2f(round(target.mapPixelToCoords(mouseClickPosition, this->m_cartesianPlane.x), round(target.mapPixelToCoords(mouseClickPosition, this->m_cartesianPlane.y));
+    this->M_centerCoordinate = Vector2f(round(target.mapPixelToCoords(mouseClickPosition, this->m_cartesianPlane).x), round(target.mapPixelToCoords(mouseClickPosition, this->m_cartesianPlane).y));
 
     this->m_vx = velocityDis(gen); //random x velocity
     this->m_vy = velocityDis(gen); //random y velocity
 
     m_color1 = Color::Black; //set color 1 to black;
-    m_color2 = Color(rand() % 256, rand() % 256, rand() % 256, ); //random colors!
+    m_color2 = Color(rand() % 256, rand() % 256, rand() % 256); //random colors!
 
     float theta = thetaDis(gen); 
     float dTheta = 2 * M_PI / (numPoints - 1); 
@@ -205,7 +205,7 @@ void Particle::draw(RenderTarget& target, RenderStates states) const
     for (unsigned short j = 1; j <= m_numPoints; j++)
     {
         lines[j].position = Vector2f(target.mapCoordsToPixel(Vector2f(m_A(0, j - 1), m_A(1, j - 1)), this->m_cartesianPlane));
-        lines[j].coor = this->m_color2;
+        lines[j].color = this->m_color2;
     }
 
     target.draw(lines);
@@ -224,12 +224,12 @@ void Particle::update(float dt)
     this->m_vy -= G * dt;
     float dy = this->m_vy * dt; // calculate translation distance
 
-    translat(dx, dy); //actually translating.
+    translate(dx, dy); //actually translating.
 }
 
 void Particle::translate(double xShift, double yShift)
 {
-    TranlationMatrix T(xShift, yShift, this->m_A.getCols()); 
+    TranslationMatrix T(xShift, yShift, this->m_A.getCols()); 
 
     this->m_A = T + m_A;
     
@@ -245,7 +245,7 @@ void Particle::rotate(double theta)
 
     translate(-m_centerCoordinate.x, -m_centerCoordinate.y);
 
-    Rotationmatrix R(theta);
+    RotationMatrix R(theta);
 
     this->m_A = R * m_A;
 
@@ -254,7 +254,7 @@ void Particle::rotate(double theta)
 
 void Particle::scale(double c)
 {
-    Vecoctor2f temp = m_cenetCoordinates;
+    Vector2f temp = m_cenetCoordinates;
 
     translate(-m_centerCoordinate.x, -m_centerCoordinate.y);
 
