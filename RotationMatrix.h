@@ -2,7 +2,7 @@
 #include "Matrices.h"
 
 using namespace Matrices;
-class Matrices::RotationMatrix : public Matrix {
+class RotationMatrix : public Matrix {
 public:
 	RotationMatrix(double theta);
 };
